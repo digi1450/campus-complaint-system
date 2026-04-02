@@ -1,29 +1,15 @@
 # Campus Complaint System
 
-A web-based NoSQL system for reporting and managing campus issues such as facility problems, equipment failures, and network issues.  
-This project was developed for a NoSQL assignment and demonstrates CRUD operations, search, and reporting using MongoDB.
-
-## Project Overview
-
-The Campus Complaint System allows users to submit complaints through a web form and manage them through a web interface.  
-The system stores complaint data in MongoDB as documents and supports:
-
-- Create / Add complaint
-- Read / View all complaints
-- Search complaints
-- Update complaint status
-- Delete complaint
-- Reporting summary
+A web-based NoSQL project for reporting and managing campus issues such as facility, equipment, and network problems.
 
 ## Features
 
-- Submit a new complaint
+- Add a new complaint
 - View all complaints
-- Search complaints by title, location, or category
+- Search complaints
 - Update complaint status
-- Delete complaint
+- Delete complaints
 - View status summary report
-- Store complaint data in MongoDB Atlas
 
 ## Technologies Used
 
@@ -40,28 +26,63 @@ The system stores complaint data in MongoDB as documents and supports:
 This project uses MongoDB, a document-oriented NoSQL database.
 
 Each complaint is stored as a document.  
-The data model is suitable for NoSQL because it includes:
+The data model includes:
+- flexible fields
+- nested object: `reportedBy`
+- array field: `tags`
 
-- Flexible fields
-- Nested object:
-  - `reportedBy`
-- Array field:
-  - `tags`
+## Project Structure
 
-Example complaint document:
+```text
+CampusComplaint/
+├── models/
+├── public/
+├── routes/
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── server.js
+```
 
-```json
-{
-  "title": "Projector not working",
-  "category": "Equipment",
-  "description": "The projector in Room CB2401 cannot display.",
-  "location": "CB2401",
-  "urgency": "High",
-  "status": "Pending",
-  "reportedBy": {
-    "name": "Digi",
-    "studentId": "6712345"
-  },
-  "tags": ["projector", "classroom", "equipment"],
-  "createdAt": "2026-04-02T10:15:24.919Z"
-}
+## Installation
+
+```bash
+npm install
+```
+
+Create a `.env` file in the project root:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5050
+```
+
+Run the server:
+
+```bash
+node server.js
+```
+
+## Usage
+
+Open these pages in your browser:
+
+- `http://localhost:5050/index.html`
+- `http://localhost:5050/list.html`
+- `http://localhost:5050/report.html`
+
+## API Endpoints
+
+- `POST /api/complaints`
+- `GET /api/complaints`
+- `GET /api/complaints/search/:keyword`
+- `PUT /api/complaints/:id`
+- `DELETE /api/complaints/:id`
+- `GET /api/reports/status-summary`
+
+## Future Work
+
+- Add user authentication
+- Add image upload
+- Add more report types
+- Improve UI design
