@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Complaint - Add Complaint</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Campus Complaint System</h1>
+    <nav>
+      <a href="index.html">Add Complaint</a>
+      <a href="list.html">View Complaints</a>
+      <a href="report.html">Reports</a>
+    </nav>
+
+    <div class="card">
+      <h2>Add Complaint</h2>
+
+      <form id="complaintForm">
+        <label>Title</label>
+        <input type="text" id="title" required />
+
+        <label>Category</label>
+        <select id="category" required>
+          <option value="">Select category</option>
+          <option value="Facility">Facility</option>
+          <option value="Equipment">Equipment</option>
+          <option value="Network">Network</option>
+          <option value="Cleanliness">Cleanliness</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label>Description</label>
+        <textarea id="description" rows="4" required></textarea>
+
+        <label>Location</label>
+        <input type="text" id="location" required />
+
+        <label>Urgency</label>
+        <select id="urgency" required>
+          <option value="">Select urgency</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label>Reporter Name</label>
+        <input type="text" id="reporterName" required />
+
+        <label>Student ID</label>
+        <input type="text" id="studentId" required />
+
+        <label>Tags (comma separated)</label>
+        <input type="text" id="tags" placeholder="wifi, classroom, building" />
+
+        <button type="submit">Submit Complaint</button>
+      </form>
+
+      <p id="formMessage"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
