@@ -51,9 +51,13 @@ async function submitComplaint(event) {
     tags,
     attachments,
     extraDetails: {
-      building,
-      room,
-      deviceType
+      location: {
+        building,
+        room
+      },
+      device: {
+        type: deviceType
+      }
     }
   };
 
@@ -123,9 +127,11 @@ function renderComplaints(complaints) {
       <p><strong>Phone:</strong> ${complaint.reportedBy?.contact?.phone || '-'}</p>
       <p><strong>Tags:</strong> ${complaint.tags?.join(', ') || '-'}</p>
       <p><strong>Attachments:</strong> ${complaint.attachments?.join(', ') || '-'}</p>
-      <p><strong>Building:</strong> ${complaint.extraDetails?.building || '-'}</p>
-      <p><strong>Room:</strong> ${complaint.extraDetails?.room || '-'}</p>
-      <p><strong>Device Type:</strong> ${complaint.extraDetails?.deviceType || '-'}</p>
+      <p><strong>Building:</strong> ${complaint.extraDetails?.location?.building || '-'}</p>
+      <p><strong>Room:</strong> ${complaint.extraDetails?.location?.room || '-'}</p>
+      <p><strong>Device Type:</strong> ${complaint.extraDetails?.device?.type || '-'}</p>
+      <p><strong>Total Tags:</strong> ${complaint.tags?.length || 0}</p>
+      <p><strong>Total Attachments:</strong> ${complaint.attachments?.length || 0}</p>
 
       <div class="action-row">
         <select class="small-select" id="status-${complaint._id}">

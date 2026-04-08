@@ -31,9 +31,13 @@ const ComplaintSchema = new mongoose.Schema({
     }
   ],
   extraDetails: {
-    building: String,
-    room: String,
-    deviceType: String
+    location: {
+      building: String,
+      room: String
+    },
+    device: {
+      type: String
+    }
   },
   createdAt: {
     type: Date,
