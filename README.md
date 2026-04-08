@@ -1,15 +1,16 @@
 # Campus Complaint System
 
-A web-based NoSQL project for reporting and managing campus issues such as facility, equipment, and network problems.
+A web-based NoSQL project for reporting and managing campus issues such as facility, equipment, network, and cleanliness problems.
 
 ## Features
 
 - Add a new complaint
 - View all complaints
-- Search complaints
-- Update complaint status
+- Search complaints by top-level, nested, and array-based fields
+- Edit complaint details and status
 - Delete complaints
-- View status summary report
+- View complaint update history
+- View reports for status, category, urgency, and tag usage
 
 ## Technologies Used
 
@@ -25,22 +26,31 @@ A web-based NoSQL project for reporting and managing campus issues such as facil
 
 This project uses MongoDB, a document-oriented NoSQL database.
 
-Each complaint is stored as a document.  
-The data model includes:
-- flexible fields
-- nested object: `reportedBy`
-- array field: `tags`
+Each complaint is stored as a document. The data model demonstrates NoSQL concepts through:
+- flexible category-specific fields
+- nested objects such as `reportedBy.contact`
+- nested objects such as `extraDetails.location` and `extraDetails.device`
+- arrays such as `tags` and `attachments`
+- embedded update history through the `updates` array of subdocuments
 
 ## Project Structure
 
 ```text
 CampusComplaint/
 ├── models/
+│   └── Complaint.js
 ├── public/
+│   ├── app.js
+│   ├── index.html
+│   ├── list.html
+│   ├── report.html
+│   └── style.css
 ├── routes/
+│   └── complaintRoutes.js
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── README.md
 └── server.js
 ```
 
@@ -79,10 +89,13 @@ Open these pages in your browser:
 - `PUT /api/complaints/:id`
 - `DELETE /api/complaints/:id`
 - `GET /api/reports/status-summary`
+- `GET /api/reports/category-summary`
+- `GET /api/reports/urgency-summary`
+- `GET /api/reports/tag-summary`
 
 ## Future Work
 
-- Add user authentication
-- Add image upload
-- Add more report types
-- Improve UI design
+- Add real file upload support for attachments
+- Add authentication and role-based access
+- Add more advanced reports and dashboard charts
+- Improve UI design and responsiveness
