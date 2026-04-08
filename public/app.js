@@ -16,12 +16,23 @@ async function submitComplaint(event) {
   const urgency = document.getElementById('urgency').value;
   const reporterName = document.getElementById('reporterName').value;
   const studentId = document.getElementById('studentId').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
   const tagsInput = document.getElementById('tags').value;
+  const attachmentsInput = document.getElementById('attachments').value;
+  const building = document.getElementById('building').value;
+  const room = document.getElementById('room').value;
+  const deviceType = document.getElementById('deviceType').value;
 
   const tags = tagsInput
     .split(',')
     .map(tag => tag.trim())
     .filter(tag => tag !== '');
+
+  const attachments = attachmentsInput
+    .split(',')
+    .map(item => item.trim())
+    .filter(item => item !== '');
 
   const complaintData = {
     title,
@@ -31,9 +42,19 @@ async function submitComplaint(event) {
     urgency,
     reportedBy: {
       name: reporterName,
-      studentId: studentId
+      studentId: studentId,
+      contact: {
+        email,
+        phone
+      }
     },
-    tags
+    tags,
+    attachments,
+    extraDetails: {
+      building,
+      room,
+      deviceType
+    }
   };
 
   const formMessage = document.getElementById('formMessage');
@@ -98,7 +119,13 @@ function renderComplaints(complaints) {
       <p><strong>Urgency:</strong> ${complaint.urgency}</p>
       <p><strong>Status:</strong> ${complaint.status}</p>
       <p><strong>Reporter:</strong> ${complaint.reportedBy?.name || '-'} (${complaint.reportedBy?.studentId || '-'})</p>
+      <p><strong>Email:</strong> ${complaint.reportedBy?.contact?.email || '-'}</p>
+      <p><strong>Phone:</strong> ${complaint.reportedBy?.contact?.phone || '-'}</p>
       <p><strong>Tags:</strong> ${complaint.tags?.join(', ') || '-'}</p>
+      <p><strong>Attachments:</strong> ${complaint.attachments?.join(', ') || '-'}</p>
+      <p><strong>Building:</strong> ${complaint.extraDetails?.building || '-'}</p>
+      <p><strong>Room:</strong> ${complaint.extraDetails?.room || '-'}</p>
+      <p><strong>Device Type:</strong> ${complaint.extraDetails?.deviceType || '-'}</p>
 
       <div class="action-row">
         <select class="small-select" id="status-${complaint._id}">
