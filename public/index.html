@@ -20,10 +20,10 @@
 
       <form id="complaintForm">
         <label>Title</label>
-        <input type="text" id="title" required />
+        <input type="text" id="title" name="title" required />
 
         <label>Category</label>
-        <select id="category" required>
+        <select id="category" name="category" required onchange="toggleCreateCategoryFields()">
           <option value="">Select category</option>
           <option value="Facility">Facility</option>
           <option value="Equipment">Equipment</option>
@@ -33,13 +33,13 @@
         </select>
 
         <label>Description</label>
-        <textarea id="description" rows="4" required></textarea>
+        <textarea id="description" name="description" rows="4" required></textarea>
 
         <label>Location</label>
-        <input type="text" id="location" required />
+        <input type="text" id="location" name="location" required />
 
         <label>Urgency</label>
-        <select id="urgency" required>
+        <select id="urgency" name="urgency" required>
           <option value="">Select urgency</option>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
@@ -47,31 +47,63 @@
         </select>
 
         <label>Reporter Name</label>
-        <input type="text" id="reporterName" required />
+        <input type="text" id="reporterName" name="reporterName" required />
 
         <label>Student ID</label>
-        <input type="text" id="studentId" required />
+        <input type="text" id="studentId" name="studentId" required />
 
         <label>Email</label>
-        <input type="email" id="email" />
+        <input type="email" id="email" name="email" />
 
         <label>Phone</label>
-        <input type="text" id="phone" />
+        <input type="text" id="phone" name="phone" />
 
         <label>Attachments (comma separated URLs or filenames)</label>
-        <input type="text" id="attachments" placeholder="photo1.jpg, report.pdf" />
+        <input type="text" id="attachments" name="attachments" placeholder="photo1.jpg, report.pdf" />
 
         <label>Building</label>
-        <input type="text" id="building" />
+        <input type="text" id="building" name="building" />
 
         <label>Room</label>
-        <input type="text" id="room" />
+        <input type="text" id="room" name="room" />
 
         <label>Device Type</label>
-        <input type="text" id="deviceType" placeholder="Projector, Router, Air Conditioner" />
+        <input type="text" id="deviceType" name="deviceType" placeholder="Projector, Router, Air Conditioner" />
+
+        <div id="createFacilityFields" class="category-fields hidden">
+          <label>Facility Issue Area</label>
+          <input type="text" id="facilityIssueArea" name="facilityIssueArea" placeholder="Restroom, classroom, lighting" />
+
+          <label>Maintenance Needed</label>
+          <input type="text" id="facilityMaintenanceNeeded" name="facilityMaintenanceNeeded" placeholder="Repair, replacement, inspection" />
+        </div>
+
+        <div id="createEquipmentFields" class="category-fields hidden">
+          <label>Equipment Name</label>
+          <input type="text" id="equipmentName" name="equipmentName" placeholder="Projector, printer, air conditioner" />
+
+          <label>Serial Number</label>
+          <input type="text" id="serialNumber" name="serialNumber" placeholder="Optional serial number" />
+        </div>
+
+        <div id="createNetworkFields" class="category-fields hidden">
+          <label>Connection Type</label>
+          <input type="text" id="connectionType" name="connectionType" placeholder="Wi-Fi, LAN, hotspot" />
+
+          <label>Network Name</label>
+          <input type="text" id="networkName" name="networkName" placeholder="CampusWiFi, Lab LAN" />
+        </div>
+
+        <div id="createCleanlinessFields" class="category-fields hidden">
+          <label>Cleanliness Issue Type</label>
+          <input type="text" id="cleanlinessIssueType" name="cleanlinessIssueType" placeholder="Trash, odor, spill" />
+
+          <label>Affected Area</label>
+          <input type="text" id="affectedArea" name="affectedArea" placeholder="Hallway, canteen, restroom" />
+        </div>
 
         <label>Tags (comma separated)</label>
-        <input type="text" id="tags" placeholder="wifi, classroom, building" />
+        <input type="text" id="tags" name="tags" placeholder="wifi, classroom, building" />
 
         <button type="submit">Submit Complaint</button>
       </form>

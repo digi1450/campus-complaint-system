@@ -45,6 +45,18 @@ form {
   gap: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
+.category-fields,
+.edit-form {
+  padding: 14px;
+  border: 1px solid #e1e5ea;
+  border-radius: 10px;
+  background: #f9fbfc;
+}
+
 input, textarea, select, button {
   padding: 10px;
   font-size: 14px;
@@ -88,6 +100,29 @@ button:hover {
 
 .small-select {
   width: 160px;
+}
+
+.update-history {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.update-history ul {
+  padding-left: 18px;
+  margin: 8px 0 0;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-table th,
+.report-table td {
+  border: 1px solid #d8dee6;
+  padding: 10px;
+  text-align: left;
 }
 
 .message-success {
